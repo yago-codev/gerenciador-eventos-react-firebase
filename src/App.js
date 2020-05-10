@@ -7,6 +7,7 @@ import store from "./store/index";
 import Login from "./view/Login";
 import Register from "./view/Register";
 import Home from "./view/Home";
+import RecoverPassword from "./view/RecoverPassword";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/home" component={Home} />
+        <Route exact path="/recover-password" component={RecoverPassword} />
       </Router>
     </Provider>
   );

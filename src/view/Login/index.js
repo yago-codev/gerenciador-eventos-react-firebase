@@ -81,9 +81,9 @@ export default function Login() {
         </div>
 
         <div className="opcoes-login mt-5 text-center">
-          <a href="/" className="mx-2">
+          <Link to="/recover-password" className="mx-2">
             Recuperar senha
-          </a>
+          </Link>
           <span className="text-white">&#9733;</span>
           <Link to="/register" className="mx-2">
             Quero cadastrar
