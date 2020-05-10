@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./styles.css";
 
 export default function Navbar() {
+  const dispatch = useDispatch();
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
-      <Link to="/home" className="navbar-brand font-weight-bold">
+      <Link to="/home" className="navbar-brand font-weight-bold ml-md-3">
         Eventos
       </Link>
       <button
@@ -19,24 +22,53 @@ export default function Navbar() {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav ml-md-5">
-          <li className="nav-item">
-            <Link className="nav-link text-white" to="/home">
-              Home
-            </Link>
-          </li>
+        <ul className="navbar-nav ml-md-3">
+          {useSelector((state) =>
+            state.userLogged === 0 ? (
+              <>
+                <li>
+                  <Link className="nav-link text-white" to="/register">
+                    Criar Conta
+                  </Link>
+                </li>
 
-          <li>
-            <Link className="nav-link text-white" to="/register">
-              Criar Conta
-            </Link>
-          </li>
+                <li>
+                  <Link className="nav-link text-white" to="/">
+                    Entrar
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link text-white" to="/home">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link className="nav-link text-white" to="/">
+                    Criar Evento
+                  </Link>
+                </li>
 
-          <li>
-            <Link className="nav-link text-white" to="/">
-              Entrar
-            </Link>
-          </li>
+                <li>
+                  <Link className="nav-link text-white" to="/">
+                    Meus Eventos
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    className="nav-link text-white"
+                    to="/"
+                    onClick={() => dispatch({ type: "LOGOUT" })}
+                  >
+                    Sair
+                  </Link>
+                </li>
+              </>
+            )
+          )}
         </ul>
       </div>
     </nav>
