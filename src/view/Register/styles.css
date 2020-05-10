@@ -1,0 +1,31 @@
+.form-cadastro {
+  height: 100vh;
+  background-color: #614ea6;
+}
+
+.form-register {
+  min-width: 286px;
+}
+
+.form-register input {
+  height: 48px;
+  background-color: #52428c;
+  color: #e6e6e6;
+  border: none;
+}
+
+.form-register input::placeholder {
+  color: #e6e6e6;
+}
+
+.btn-cadastro {
+  background-color: #ffffff;
+  color: #614ea6;
+  transition: background-color 0.1s ease-in;
+  font-weight: medium;
+}
+
+.btn-cadastro:hover {
+  background-color: #f21667;
+  color: #ffffff;
+}
