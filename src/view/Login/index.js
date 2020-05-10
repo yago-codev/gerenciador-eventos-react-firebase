@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import firebase from "../../config/firebase";
 import "firebase/auth";
@@ -11,11 +12,20 @@ export default function Login() {
   const [senha, setSenha] = useState("");
   const [msgTipo, setMsgTipo] = useState("");
 
+  const dispatch = useDispatch();
+
   async function logar() {
     try {
       await firebase.auth().signInWithEmailAndPassword(email, senha);
 
       setMsgTipo("Sucesso!");
+
+      setTimeout(() => {
+        dispatch({
+          type: "LOGIN",
+          userEmail: email,
+        });
+      }, 1500);
     } catch (erro) {
       setMsgTipo("Erro!");
     }
@@ -26,7 +36,7 @@ export default function Login() {
       <form className="form-signin w-40 mx-auto">
         <div className="text-center mb-4">
           <h1 className="h3 mb-3 font-weight-normal text-white font-weight-bold">
-            Login
+            Entrar
           </h1>
         </div>
 
@@ -79,6 +89,10 @@ export default function Login() {
             Quero cadastrar
           </Link>
         </div>
+
+        {useSelector((state) => state.userLogged) === 1 && (
+          <Redirect to="/home" />
+        )}
       </form>
     </div>
   );
