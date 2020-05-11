@@ -46,7 +46,7 @@ export default function Navbar() {
                   </Link>
                 </li>
                 <li>
-                  <Link className="nav-link text-white" to="/">
+                  <Link className="nav-link text-white" to="/create-event">
                     Criar Evento
                   </Link>
                 </li>

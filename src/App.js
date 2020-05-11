@@ -8,6 +8,7 @@ import Login from "./view/Login";
 import Register from "./view/Register";
 import Home from "./view/Home";
 import RecoverPassword from "./view/RecoverPassword";
+import CreateEvent from "./view/CreateEvent";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/recover-password" component={RecoverPassword} />
+        <Route exact path="/create-event" component={CreateEvent} />
       </Router>
     </Provider>
   );

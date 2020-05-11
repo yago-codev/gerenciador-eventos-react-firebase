@@ -18,6 +18,10 @@
   color: #e6e6e6;
 }
 
+.form-register .form-control:focus::placeholder {
+  color: white;
+}
+
 .btn-cadastro {
   background-color: #ffffff;
   color: #614ea6;

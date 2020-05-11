@@ -1,0 +1,35 @@
+.create-event {
+  height: calc(100vh + 56px);
+  background-color: #614ea6;
+}
+
+.form-create-event input,
+.form-create-event select,
+.form-create-event textarea {
+  border: none;
+  background-color: #52428c;
+}
+
+.form-create-event input,
+.form-create-event input::placeholder,
+.form-create-event select {
+  color: #e6e6e6;
+  fill: #e6e6e6;
+  height: 48px;
+}
+
+.form-create-event .form-control:focus::placeholder {
+  color: white;
+}
+
+.btn-cadastro {
+  background-color: #ffffff;
+  color: #614ea6;
+  transition: background-color 0.1s ease-in;
+  font-weight: medium;
+}
+
+.btn-cadastro:hover {
+  background-color: #f21667;
+  color: #ffffff;
+}
