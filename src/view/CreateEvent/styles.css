@@ -3,19 +3,20 @@
   background-color: #614ea6;
 }
 
-.form-create-event input,
-.form-create-event select,
-.form-create-event textarea {
+.form-create-event .form-control {
   border: none;
   background-color: #52428c;
+  color: #e6e6e6;
 }
 
-.form-create-event input,
-.form-create-event input::placeholder,
-.form-create-event select {
+.form-create-event select,
+.form-create-event input {
+  height: 48px;
+}
+
+.form-create-event .form-control::placeholder {
   color: #e6e6e6;
   fill: #e6e6e6;
-  height: 48px;
 }
 
 .form-create-event .form-control:focus::placeholder {
