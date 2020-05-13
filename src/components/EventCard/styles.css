@@ -1,10 +1,10 @@
-.event-card {
-  height: 100vh;
-  background-color: #614ea6;
+.card {
+  margin-right: 15px;
+  background-color: #52428c;
 }
 
-.card {
-  background-color: #52428c;
+.card:last-child {
+  margin-right: none;
 }
 
 .img-card {
