@@ -10,24 +10,31 @@ import "./styles.css";
 
 export default function Home() {
   const [eventos, setEventos] = useState([]);
+  const [pesquisa, setPesquisa] = useState("");
 
   let listaEventos = [];
 
-  useEffect(() => {
+  function buscarEventos() {
     firebase
       .firestore()
       .collection("eventos")
       .get()
       .then(async (result) => {
-        await result.docs.map((doc) => {
-          return listaEventos.push({
-            id: doc.id,
-            ...doc.data(),
-          });
+        await result.docs.forEach((doc) => {
+          if (doc.data().titulo.indexOf(pesquisa) >= 0) {
+            listaEventos.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          }
         });
 
         setEventos(listaEventos);
       });
+  }
+
+  useEffect(() => {
+    buscarEventos();
   }, []);
 
   return (
@@ -35,6 +42,23 @@ export default function Home() {
       <Navbar />
       <div className="home">
         <div className="container">
+          <div className="row">
+            <div className="col-md-6 d-flex pl-0 mt-5 mx-auto">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Pesquisar eventos..."
+                onChange={(e) => setPesquisa(e.target.value)}
+              />
+              <button
+                className="btn-search btn"
+                type="button"
+                onClick={buscarEventos}
+              >
+                Pesquisar
+              </button>
+            </div>
+          </div>
           <div className="row">
             {eventos.map((evento) => (
               <EventCard

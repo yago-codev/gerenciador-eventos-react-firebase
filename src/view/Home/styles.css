@@ -2,3 +2,30 @@
   height: 100vh;
   background-color: #614ea6;
 }
+
+.form-control {
+  height: 48px;
+  background-color: #52428c;
+  color: #e6e6e6;
+  border: none;
+  position: relative;
+}
+
+.form-control:focus::placeholder {
+  color: transparent;
+}
+
+.form-control::placeholder {
+  color: #e6e6e6;
+}
+
+.btn-search {
+  background-color: #f21667;
+  color: #e6e6e6;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  position: absolute;
+  top: 0;
+  right: 15px;
+  bottom: 0;
+}
