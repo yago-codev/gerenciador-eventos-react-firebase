@@ -8,40 +8,66 @@ import firebase from "../../config/firebase";
 
 import "./styles.css";
 
-export default function Home() {
+export default function Home({ match }) {
   const [eventos, setEventos] = useState([]);
   const [pesquisa, setPesquisa] = useState("");
 
   let listaEventos = [];
+  const usuarioEmail = useSelector((state) => state.userEmail);
 
   function buscarEventos() {
-    firebase
-      .firestore()
-      .collection("eventos")
-      .get()
-      .then(async (result) => {
-        await result.docs.forEach((doc) => {
-          if (doc.data().titulo.indexOf(pesquisa) >= 0) {
-            listaEventos.push({
-              id: doc.id,
-              ...doc.data(),
-            });
-          }
-        });
+    if (match.params.my_event) {
+      firebase
+        .firestore()
+        .collection("eventos")
+        .where("usuario", "==", usuarioEmail)
+        .get()
+        .then(async (result) => {
+          await result.docs.forEach((doc) => {
+            if (doc.data().titulo.indexOf(pesquisa) >= 0) {
+              listaEventos.push({
+                id: doc.id,
+                ...doc.data(),
+              });
+            }
+          });
 
-        setEventos(listaEventos);
-      });
+          setEventos(listaEventos);
+        });
+    } else {
+      firebase
+        .firestore()
+        .collection("eventos")
+        .get()
+        .then(async (result) => {
+          await result.docs.forEach((doc) => {
+            if (doc.data().titulo.indexOf(pesquisa) >= 0) {
+              listaEventos.push({
+                id: doc.id,
+                ...doc.data(),
+              });
+            }
+          });
+
+          setEventos(listaEventos);
+        });
+    }
   }
 
   useEffect(() => {
     buscarEventos();
-  }, []);
+  }, [buscarEventos]);
 
   return (
     <>
       <Navbar />
-      <div className="home">
+      <div className="home pb-5">
         <div className="container">
+          <div className="row">
+            <h2 className="w-100 text-center mb-0 pb-0 text-white mt-5">
+              Eventos
+            </h2>
+          </div>
           <div className="row">
             <div className="col-md-6 d-flex pl-0 mt-5 mx-auto">
               <input

@@ -91,7 +91,7 @@ export default function Login() {
         </div>
 
         {useSelector((state) => state.userLogged) === 1 && (
-          <Redirect to="/home" />
+          <Redirect to="/events" />
         )}
       </form>
     </div>

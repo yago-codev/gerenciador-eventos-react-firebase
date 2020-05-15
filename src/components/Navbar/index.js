@@ -10,7 +10,7 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
       <div className="container">
-        <Link to="/home" className="navbar-brand font-weight-bold">
+        <Link to="/events" className="navbar-brand font-weight-bold">
           Eventos
         </Link>
         <button
@@ -42,7 +42,7 @@ export default function Navbar() {
               ) : (
                 <>
                   <li className="nav-item">
-                    <Link className="nav-link text-white" to="/home">
+                    <Link className="nav-link text-white" to="/events">
                       Home
                     </Link>
                   </li>
@@ -53,7 +53,10 @@ export default function Navbar() {
                   </li>
 
                   <li>
-                    <Link className="nav-link text-white" to="/">
+                    <Link
+                      className="nav-link text-white"
+                      to="/events/my-events"
+                    >
                       Meus Eventos
                     </Link>
                   </li>

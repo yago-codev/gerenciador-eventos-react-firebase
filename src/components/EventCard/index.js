@@ -20,7 +20,7 @@ export default function EventCard({
       .ref(`images/${img}`)
       .getDownloadURL()
       .then((url) => setUrlImagem(url));
-  }, []);
+  });
 
   return (
     <div className="event-card col-md-3 mt-5 col-sm-12 pl-0 pr-0">

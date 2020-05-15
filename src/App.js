@@ -16,7 +16,8 @@ function App() {
       <Router>
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
-        <Route exact path="/home" component={Home} />
+        <Route exact path="/events" component={Home} />
+        <Route path="/events/:my_event" component={Home} />
         <Route exact path="/recover-password" component={RecoverPassword} />
         <Route exact path="/create-event" component={CreateEvent} />
       </Router>
